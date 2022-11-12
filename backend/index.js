@@ -21,7 +21,11 @@ app.use(
 app.get("/", (req, res) => {
   res.json({ message: "Server up" });
 });
+
+
 app.use("/api/auth/", auth);
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
