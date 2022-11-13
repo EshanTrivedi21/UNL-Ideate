@@ -20,7 +20,7 @@ function App() {
       map.jumpTo({
         center: [position.coords.longitude, position.coords.latitude],
         zoom: 18,
-        // pitch: 45,
+        pitch: 45,
         // bearing: 90
       });
       var marker = new UnlSdk.Marker()
