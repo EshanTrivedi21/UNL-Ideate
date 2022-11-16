@@ -1,0 +1,32 @@
+.homeIntro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(50vh);
+}
+
+.buttonPrimary button{
+    background-color: #EBEBEB;
+    color: #242424;
+    border: 2px solid #EBEBEB;
+    border-radius: 10px;
+    width: 70vw;
+    height: 6.6%;
+    font-size: 4.5vw;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 2.5vh 0;
+}
+
+.buttonSecondary button{
+    background-color: transparent;  
+    border: 2px solid #EBEBEB;
+    border-radius: 10px;
+    color: #EBEBEB;
+    width: 70vw;
+    height: 6.6%;
+    font-size: 4.5vw;
+    font-weight: 600;
+    text-transform: capitalize;
+}
