@@ -1,19 +1,15 @@
-.loginContent {
+.signupContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(22.5vh);
-  padding: 10vh 0;
-  background: #F94D4D;
-  box-shadow: 0px 7px 17px rgba(0, 0, 0, 0.5);
-  border-radius: 25px;
+  transform: translateY(12.5vh);
 }
 
-.backBtn {
+.backBtnSignup {
     position: absolute;
     font-size: 3.55vh;
-    color: #242424;
+    color: #ebebeb;
     top: 9%;
     left: 3%;
 }
@@ -62,30 +58,30 @@
 }
 
 .buttonPrimary button {
-    background-color: #EBEBEB;
-    color: #242424;
-    border: 2px solid #EBEBEB;
-    border-radius: 10px;
-    width: 77vw;
-    height: 6.5%;
-    font-size: 4.5vw;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin: 2.5vh 0;
+  background-color: #ebebeb;
+  color: #242424;
+  border: 2px solid #ebebeb;
+  border-radius: 10px;
+  width: 77vw;
+  height: 6.5%;
+  font-size: 4.5vw;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 2.5vh 0;
 }
 
-.buttonPrimary button:hover{
-    background-color: #EBEBEB;
-    color: #242424;
+.buttonPrimary button:hover {
+  background-color: #ebebeb;
+  color: #242424;
 }
 
 .textTertiary {
-    text-align: center;
-    transform: translateY(-2.5vh);
-    font-size: 4vw;
-    color: #EBEBEB;
+  text-align: center;
+  transform: translateY(-2.5vh);
+  font-size: 4vw;
+  color: #ebebeb;
 }
 
 .textTertiary a {
-    text-decoration: underline;
+  text-decoration: underline;
 }

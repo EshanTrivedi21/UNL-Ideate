@@ -3,23 +3,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translateY(45vh);
+    transform: translateY(50vh);
 }
 .homeSVG {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translate(4vw, 25vh);
+    transform: translate(4vw, 32.5vh);
 }
 
 .homeSVG img{
     position: absolute;
-    width: auto;
-    height: 30vh;
+    width: 65vw;
 }
 
-.buttonPrimary button{
+.buttonPrimaryMain button{
     background-color: #EBEBEB;
     color: #242424;
     border: 2px solid #EBEBEB;
@@ -32,12 +31,12 @@
     margin: 2.5vh 0;
 }
 
-.buttonPrimary button:hover{
+.buttonPrimaryMain button:hover{
     background-color: #EBEBEB;
     color: #242424;
 }
 
-.buttonSecondary button{
+.buttonSecondaryMain button{
     background-color: transparent;  
     border: 2px solid #EBEBEB;
     border-radius: 10px;
@@ -49,7 +48,7 @@
     text-transform: capitalize;
 }
 
-.buttonSecondary button:hover{
+.buttonSecondaryMain button:hover{
     background-color: transparent;  
     color: #EBEBEB;
 }

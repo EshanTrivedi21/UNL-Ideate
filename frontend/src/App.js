@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
-import Home from "./component/Home";
-import Login from "./component/Login";
+import Home from "./component/Home.js";
+import Login from "./component/Login.js";
+import Signup from "./component/Signup.js";
 
 function App() {
   useEffect(() => {
@@ -75,6 +75,10 @@ function App() {
     {
       path: "/login",
       element: <Login/>,
+    },
+    {
+      path: "/signup",
+      element: <Signup/>,
     },
   ]);
   return (

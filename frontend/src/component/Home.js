@@ -7,10 +7,11 @@ import "./Home.css"
 
 export default function Home() {
   return (
-    <div>
+    <>
+      <div>
         <Container>
         <div className="homeSVG">
-          <img src={homepagesvg} />
+          <img src={homepagesvg} alt="illustration"/>
         </div>
         <div className="homeIntro">
           <div className="homeTitle">
@@ -21,16 +22,17 @@ export default function Home() {
                 "We will save you from them!"
             </Tagline>
           </div>
-          <div className="buttonPrimary">
-            <Button variant="contained">Login</Button>
+          <div className="buttonPrimaryMain">
+          <Link to="/login"><Button variant="contained">Login</Button></Link>
           </div>
-          <div className="buttonSecondary">
-            <Button variant="contained">Sign Up</Button>
+          <div className="buttonSecondaryMain">
+          <Link to="/signup"><Button variant="contained">Sign Up</Button></Link>
           </div>
         </div>
       </Container>
     </div>
-  )
+    </>
+  );
 }
 
 const Container = styled.div`
@@ -38,6 +40,11 @@ const Container = styled.div`
   height: 100vh;
   background: #F94D4D;
   margin: 0;
+  overflow: hidden;
+  a{
+    text-decoration: none;
+    color: #242424;
+  }
 `;
 const Title = styled.h1`
   margin: 0;
