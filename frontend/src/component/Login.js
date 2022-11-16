@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from '@mui/material/Button';
+import homepagesvg from '../assets/homepage.svg';
 import "./Login.css"
 
 export default function Login() {
@@ -8,7 +9,7 @@ export default function Login() {
     <>
       <Container>
         <div className="homeSVG">
-
+          <img src={homepagesvg} />
         </div>
         <div className="homeIntro">
           <div className="homeTitle">
