@@ -44,6 +44,10 @@ export default function Dashboard() {
       </div>
       <div id="map" style={{ width: "100vw", height: "100vh" }}></div>
       <div className="bottomDashboard">
+        <div className="cc">
+          <div className="left"></div>
+          <div className="right"></div>
+        </div>
         <div className="camBtn">
             <i className="fa-solid fa-camera cameraButton"></i>
         </div>
