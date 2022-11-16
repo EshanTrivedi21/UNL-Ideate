@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 let User = require("../../models/User.model");
-let serverUrl = "http://192.168.0.108:4000";
 async function authCheck(req, res, next) {
   const token = req.cookies['token'];
   if (!token) {
@@ -11,10 +10,9 @@ async function authCheck(req, res, next) {
     let user = await User.findOne({ _id: decoded.user_id });
     if (!user) return res.status(401).json({ err: "Invalid Token" });
     decoded['Username'] = user.Username;
-    decoded['FullName'] = user.FullName;
-    decoded['ProfilePicture'] = serverUrl+user.ProfilePicture;
-    decoded['Email'] = user.Email;
-    decoded['Bio'] = user.Bio;
+    decoded['Phone'] = user.Phone;
+    decoded['eContacts'] = user.eContacts;
+    decoded['reward'] = user.reward;
     req.user = decoded;
   } catch (err) {
     return res.status(401).json({ err: "Invalid Token" });
