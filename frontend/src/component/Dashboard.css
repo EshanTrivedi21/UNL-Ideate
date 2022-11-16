@@ -1,0 +1,97 @@
+.locatorDashboard {
+  width: 87.5vw;
+  background: #ff3e3e;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, 0);
+  z-index: 99;
+  padding: 5% 4%;
+}
+
+.form__group-locator {
+  margin-bottom: 2vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__group-locator:last-child {
+  margin-bottom: 0vh;
+}
+
+.form__input-locator {
+  font-size: 4.75vw;
+  color: white;
+  padding: 1vw 2vw;
+  border-radius: 5px;
+  font-family: inherit;
+  background: linear-gradient(90.72deg, #ff3838 2.74%, #ff3e3e 95.84%);
+  box-shadow: inset -2px -2px 100px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  width: 70vw;
+  transition: all 0.3s;
+}
+
+.form__input-locator:focus {
+  outline: none;
+  background: linear-gradient(90.72deg, #ff3838 2.74%, #ff3e3e 95.84%);
+  box-shadow: inset -2px -2px 100px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.form__input-locator::-webkit-input-placeholder {
+  color: white;
+}
+
+.form__label-locator {
+  font-size: 4.75vw;
+  display: block;
+  transition: all 0.25s;
+  color: white;
+}
+
+.bottomDashboard {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  width: 95vw;
+  height: 15vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 2%;
+  background: #ff3e3e;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  flex-direction: column;
+  z-index: 99;
+  color: #FFF9F9;
+}
+
+.bottomNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #ff5e5e;
+  padding: 3% 0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.camBtn {
+  background-color: #ff3e3e;
+  position: absolute;
+  margin: 50%;
+  transform: translate(0,0);
+  display: inline;
+  padding: 5%;
+  border-radius: 50%;
+}
+
+.cameraButton {
+  color: #ebebeb;
+  font-size: 10vw;
+}

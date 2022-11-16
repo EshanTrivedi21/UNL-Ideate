@@ -8,6 +8,7 @@ import {
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
 import Signup from "./component/Signup.js";
+import Dashboard from "./component/Dashboard.js";
 
 function App() {
   useEffect(() => {
@@ -70,7 +71,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home/>
+      element: <Dashboard/>
     },
     {
       path: "/login",

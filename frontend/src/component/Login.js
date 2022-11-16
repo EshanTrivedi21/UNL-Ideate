@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "./Login.css";
 import { Button } from "@mui/material";
+import {Link} from "react-router-dom";
 import apiPost, { apiCheckLogin } from '../functions/basic'
 
 export default function Login() {
@@ -15,9 +16,9 @@ export default function Login() {
   return (
     <>
       <Container>
-        <a>
-          <i class="fa-solid fa-arrow-left backBtn"></i>
-        </a>
+          <Link to="/">
+          <i className="fa-solid fa-arrow-left backBtn"></i>
+          </Link>
         <div>
 
         </div>
@@ -41,7 +42,7 @@ export default function Login() {
             </div>
             <div className="buttonPrimary">
               <Button type="submit" variant="contained">Login</Button>
-              <p className="textTertiary">Don't have an account? <a>Sign up</a></p>
+              <p className="textTertiary">Don't have an account? <Link to="/signup">Sign up</Link></p>
             </div>
           </form>
         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "./Signup.css";
 import { Button } from "@mui/material";
+import {Link} from "react-router-dom";
 import apiPost, { apiCheckLogin } from "../functions/basic";
 
 export default function Signup() {
@@ -16,9 +17,9 @@ export default function Signup() {
   return (
     <>
       <Container>
-        <a>
-          <i class="fa-solid fa-arrow-left backBtnSignup"></i>
-        </a>
+        <Link to="/">
+        <i className="fa-solid fa-arrow-left backBtnSignup"></i>
+          </Link>
         <div className="signupContent">
           <div className="homeTitle">
             <Title>Register</Title>
@@ -78,7 +79,7 @@ export default function Signup() {
                 Create Account
               </Button>
               <p className="textTertiary">
-                Already have an account? <a>Login</a>
+                Already have an account? <Link to="/login">Login</Link>
               </p>
             </div>
           </form>
