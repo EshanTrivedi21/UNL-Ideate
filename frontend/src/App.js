@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 // import UnlSdk from "unl-map-js";
 // import Geohash from "latlon-geohash";
 import {
@@ -9,8 +9,11 @@ import Home from "./component/Home.js";
 import Login from "./component/Login.js";
 import Signup from "./component/Signup.js";
 import Dashboard from "./component/Dashboard.js";
+import { apiCheckLogin } from "./functions/basic.js";
+import Add from "./component/Add.js";
 
 function App() {
+  let [a, setA] = React.useState(null);
   useEffect(() => {
     // var map = new UnlSdk.Map({
     //   apiKey: "Hf4oGgFB2E23aiLLUgDqkAGrrpAA9JxL",
@@ -71,7 +74,17 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      // loader: async ()=> {
+      //   await apiCheckLogin(setA);
+      //   if(a.err){
+      //     window.location.href = "/welcome";
+      //   }
+      // },
       element: <Dashboard/>
+    },
+    {
+      path: "/welcome",
+      element: <Home/>
     },
     {
       path: "/login",
@@ -80,6 +93,10 @@ function App() {
     {
       path: "/signup",
       element: <Signup/>,
+    },
+    {
+      path: "/add",
+      element: <Add/>,
     },
   ]);
   return (

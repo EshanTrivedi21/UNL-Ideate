@@ -2,47 +2,75 @@ import React from "react";
 import styled from "styled-components";
 import "./Login.css";
 import { Button } from "@mui/material";
-import {Link} from "react-router-dom";
-import apiPost, { apiCheckLogin } from '../functions/basic'
+import { Link, useNavigate } from "react-router-dom";
+import apiPost, { apiCheckLogin } from "../functions/basic";
 
 export default function Login() {
+  let [a, setA] = React.useState(null);
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (!a) {
+      apiCheckLogin(setA);
+    } else {
+      if (!a.err) navigate("/");
+    }
+  }, [a]);
   let [Phone, setPhone] = React.useState("");
   let [Password, setPassword] = React.useState("");
   let [user, setUser] = React.useState(null);
   async function loginToApp(e) {
     e.preventDefault();
-    await apiPost('auth/login', { Phone, Password }, setUser)
+    await apiPost("auth/login", { Phone, Password }, setUser);
   }
+  React.useEffect(() => {
+    if (user) {
+      if (!user.err) navigate("/");
+    }
+  }, [user]);
   return (
     <>
       <Container>
-          <Link to="/">
+        <Link to="/">
           <i className="fa-solid fa-arrow-left backBtn"></i>
-          </Link>
-        <div>
-
-        </div>
+        </Link>
+        <div></div>
         <div className="loginContent">
           <div className="homeTitle">
-            <Title>
-                Welcome Back
-            </Title>
-            <Tagline>
-                Login to your Account
-            </Tagline>
+            <Title>Welcome Back</Title>
+            <Tagline>Login to your Account</Tagline>
           </div>
-          <form className="loginForm" onSubmit={(e)=>loginToApp(e)}>
+          <form className="loginForm" onSubmit={(e) => loginToApp(e)}>
             <div className="form__group">
-              <input type="number" placeholder="Phone Number" id="number" className="form__input" onChange={(e)=>setPhone(e.target.value)}></input>
-              <label htmlFor="number" className="form__label">Phone Number</label>
+              <input
+                type="number"
+                placeholder="Phone Number"
+                id="number"
+                className="form__input"
+                onChange={(e) => setPhone(e.target.value)}
+              ></input>
+              <label htmlFor="number" className="form__label">
+                Phone Number
+              </label>
             </div>
             <div className="form__group">
-              <input type="text" placeholder="Password" id="password" className="form__input" onChange={(e)=>setPassword(e.target.value)}></input>
-              <label htmlFor="password" className="form__label">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                className="form__input"
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+              <label htmlFor="password" className="form__label">
+                Password
+              </label>
             </div>
             <div className="buttonPrimary">
-              <Button type="submit" variant="contained">Login</Button>
-              <p className="textTertiary">Don't have an account? <Link to="/signup">Sign up</Link></p>
+              <Button type="submit" variant="contained">
+                Login
+              </Button>
+              <p className="textTertiary">
+                Don't have an account? <Link to="/signup">Sign up</Link>
+              </p>
             </div>
           </form>
         </div>
@@ -54,7 +82,7 @@ export default function Login() {
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: #EBEBEB;
+  background: #ebebeb;
   margin: 0;
   overflow: hidden;
 `;
@@ -66,16 +94,16 @@ const Title = styled.h1`
   line-height: 70px;
   letter-spacing: 0.1em;
   text-align: center;
-  color: #FFFFFF;
-  text-shadow: 0px 5px 4px #0000005C;
+  color: #ffffff;
+  text-shadow: 0px 5px 4px #0000005c;
 `;
 const Tagline = styled.div`
-font-size: 17.5px;
-font-weight: 500;
-line-height: 32px;
-letter-spacing: 0.065em;
-transform: translateY(-25%);
-text-align: center;
-color: #D9D9D9;
-margin-bottom:5vh;
-`
+  font-size: 17.5px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.065em;
+  transform: translateY(-25%);
+  text-align: center;
+  color: #d9d9d9;
+  margin-bottom: 5vh;
+`;

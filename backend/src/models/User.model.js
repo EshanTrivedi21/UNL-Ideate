@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new mongoose.Schema({
-  Username: { type: String, unique: true, required: true },
+  Username: { type: String, required: true },
   Phone: { type: Number, unique: true },
   Password: { type: String, required: true },
   token: { type: String },

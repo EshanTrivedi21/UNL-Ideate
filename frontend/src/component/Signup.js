@@ -2,18 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import "./Signup.css";
 import { Button } from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import apiPost, { apiCheckLogin } from "../functions/basic";
 
 export default function Signup() {
+  let [a, setA] = React.useState(null);
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (!a) {
+      apiCheckLogin(setA);
+    }
+    else{
+      if(!a.err) navigate("/");
+    }
+  }, [a]);
+  let [Username, setUsername] = React.useState("");
   let [Phone, setPhone] = React.useState("");
   let [Password, setPassword] = React.useState("");
   let [user, setUser] = React.useState(null);
   async function loginToApp(e) {
     e.preventDefault();
-    await apiPost("auth/login", { Phone, Password }, setUser);
+    await apiPost("auth/signup", {Username, Phone, Password }, setUser);
   }
-
+  React.useEffect(() => {
+    if(user){
+      if(!user.err) navigate("/");
+    }
+  },[user])
   return (
     <>
       <Container>
@@ -32,7 +47,7 @@ export default function Signup() {
                 placeholder="Username"
                 id="username"
                 className="form__input"
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               ></input>
               <label htmlFor="username" className="form__label">
                 Username
@@ -52,7 +67,7 @@ export default function Signup() {
             </div>
             <div className="form__group">
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 id="password"
                 className="form__input"
@@ -64,7 +79,7 @@ export default function Signup() {
             </div>
             <div className="form__group">
               <input
-                type="text"
+                type="password"
                 placeholder="Confirm Password"
                 id="confirmpassword"
                 className="form__input"

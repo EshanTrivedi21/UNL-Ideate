@@ -8,6 +8,7 @@ const User = require("../../models/User.model");
 router.post("/signup", async (req, res, next) => {
   try {
     const { Username, Phone, Password } = req.body;
+    console.log(req.body);
     if (!(Phone && Password && Username)) {
       return res.status(400).json({ err: "All input is required" });
     }
@@ -22,7 +23,7 @@ router.post("/signup", async (req, res, next) => {
       Password: encryptedPassword,
     });
     const token = jwt.sign(
-      { user_id: user._id, Email },
+      { user_id: user._id, Phone },
       process.env.TOKEN_KEY,
       {
         expiresIn: "2h",
@@ -38,6 +39,7 @@ router.post("/signup", async (req, res, next) => {
     });
     res.status(201).json({ err: null });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ err: err.message });
   }
 });
@@ -57,7 +59,7 @@ router.post("/login", async (req, res, next) => {
       return res.status(401).json({ err: "Invalid Password" });
     } else {
       const token = jwt.sign(
-        { user_id: user._id, Email },
+        { user_id: user._id, Phone },
         process.env.TOKEN_KEY,
         {
           expiresIn: "2h",

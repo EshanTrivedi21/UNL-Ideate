@@ -1,9 +1,27 @@
 import React from "react";
 import "./Dashboard.css";
 import UnlSdk from "unl-map-js";
+import { Link, useNavigate } from "react-router-dom";
+import {apiCheckLogin} from '../functions/basic.js'
 import Geohash from "latlon-geohash";
 
 export default function Dashboard() {
+  let navbarScale = 50;
+
+  let [a, setA] = React.useState(null);
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (!a) { 
+      apiCheckLogin(setA);
+    }
+  },[])
+  React.useEffect(() => {
+    if(a){
+      if(a.err){
+        navigate('/welcome');
+      }
+    }
+  }, [a]);
   React.useEffect(() => {
     var map = new UnlSdk.Map({
       apiKey: "Ddm47D4q7Iq7ci026pTvaMsIDpinlJNl",
@@ -21,12 +39,12 @@ export default function Dashboard() {
       var marker = new UnlSdk.Marker()
         .setLngLat([position.coords.longitude, position.coords.latitude])
         .addTo(map);
-      const geohash = Geohash.encode(
-        position.coords.latitude,
-        position.coords.longitude,
-        6
-      );
-      console.log(position.coords.latitude, position.coords.longitude, geohash);
+      // const geohash = Geohash.encode(
+      //   position.coords.latitude,
+      //   position.coords.longitude,
+      //   6
+      // );
+      // console.log(position.coords.latitude, position.coords.longitude, geohash);
     });
   }, []);
 
@@ -44,16 +62,12 @@ export default function Dashboard() {
       </div>
       <div id="map" style={{ width: "100vw", height: "100vh" }}></div>
       <div className="bottomDashboard">
-        <div className="cc">
-          <div className="left"></div>
-          <div className="right"></div>
-        </div>
         <div className="camBtn">
-            <i className="fa-solid fa-camera cameraButton"></i>
+            <Link to='/add'>
+              <i className="fa-solid fa-camera cameraButton"></i>
+            </Link>
         </div>
-        <div className="bottomNav">
-            <i className="fa-solid fa-home homeButton"></i>
-        </div>
+        <span className="navbarScale" value={navbarScale} max="30"> 32% </span>
       </div>
     </>
   );
