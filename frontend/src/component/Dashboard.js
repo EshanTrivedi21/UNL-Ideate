@@ -12,14 +12,14 @@ export default function Dashboard() {
   }
   const [text, setText] = useState("");
   React.useEffect(() => {
-    if (text.length != 0) {
+    if (text.length !== 0) {
       if (document.querySelector(".searchDiv").style.display === "none") {
         document.querySelector(".searchDiv").style.display = "block";
       }
     }
   }, [text]);
   let [a, setA] = React.useState(null);
-  let navbarScale = 50;
+  // let navbarScale = 50;
 
   let [geo, setGeo] = React.useState(null);
   const navigate = useNavigate();
@@ -78,17 +78,84 @@ export default function Dashboard() {
       zoom: 1,
       minZoom: 2,
     });
-    // var geolocate = new UnlSdk.GeolocateControl({
-    //   positionOptions: {
-    //     enableHighAccuracy: true,
-    //   },
-    //   trackUserLocation: true,
-    // });
-    // map.addControl(geolocate);
-    // geolocate.on("geolocate", function () {
-    //   console.log("A geolocate event has occurred.");
-    //   console.log(geolocate);
-    // });
+    map.on("load", function () {
+      map.addSource("road", {
+        type: "geojson",
+        data: "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places.geojson",
+      });
+      map.addLayer(
+        {
+          id: "road",
+          type: "heatmap",
+          source: "road",
+          maxzoom: 9,
+          paint: {
+            // Increase the heatmap weight based on frequency and property magnitude
+            "heatmap-weight": [
+              "interpolate",
+              ["linear"],
+              ["get", "mag"],
+              0,
+              0,
+              6,
+              1,
+            ],
+            // Increase the heatmap color weight weight by zoom level
+            // heatmap-intensity is a multiplier on top of heatmap-weight
+            "heatmap-intensity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              0,
+              1,
+              9,
+              3,
+            ],
+            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+            // Begin color ramp at 0-stop with a 0-transparancy color
+            // to create a blur-like effect.
+            "heatmap-color": [
+              "interpolate",
+              ["linear"],
+              ["heatmap-density"],
+              0,
+              "rgba(33,102,172,0)",
+              0.2,
+              "rgb(103,169,207)",
+              0.4,
+              "rgb(209,229,240)",
+              0.6,
+              "rgb(253,219,199)",
+              0.8,
+              "rgb(239,138,98)",
+              1,
+              "rgb(178,24,43)",
+            ],
+            // Adjust the heatmap radius by zoom level
+            "heatmap-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              0,
+              2,
+              9,
+              20,
+            ],
+            // Transition from heatmap to circle layer by zoom level
+            "heatmap-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              7,
+              1,
+              9,
+              0,
+            ],
+          },
+        },
+        "water"
+      );
+    });
     navigator.geolocation.getCurrentPosition((position) => {
       map.jumpTo({
         center: [position.coords.longitude, position.coords.latitude],
@@ -175,7 +242,7 @@ export default function Dashboard() {
                   },
                 },
               });
-              map.zoomOut({offset: [80, 60]});
+              map.zoomOut({ offset: [80, 60] });
               map.addLayer({
                 id: "route",
                 type: "line",
