@@ -1,0 +1,59 @@
+.profileTitle {
+  margin: 0;
+  margin-top: 70px;
+  padding: 0;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 70px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0px 5px 4px #0000005c;
+}
+
+.profileContainer {
+    width: 90%;
+    margin: auto;
+}
+
+.form__group-profile:last-child {
+  margin-bottom: 0;
+}
+
+.form__group-profile:first-child {
+    margin-top: 30px;
+}
+
+.form__input-profile {
+  font-size: 4.75vw;
+  color: white;
+  padding: 1vw 2vw;
+  border-radius: 5px;
+  font-family: inherit;
+  background: linear-gradient(90.72deg, #ff3838 2.74%, #ff3e3e 95.84%);
+  box-shadow: inset -2px -2px 100px rgba(0, 0, 0, 0.25),
+              inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  width: 95%;
+  transition: all 0.3s;
+  margin-bottom: 30px;
+}
+
+.form__input-profile:focus {
+  outline: none;
+  background: linear-gradient(90.72deg, #ff3838 2.74%, #ff3e3e 95.84%);
+  box-shadow: inset -2px -2px 100px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.form__input-profile::-webkit-input-placeholder {
+  color: white;
+}
+
+.form__label-profile {
+  font-size: 4.75vw;
+  display: block;
+  transition: all 0.25s;
+  color: white;
+  margin-bottom: 3px;
+  margin-left: 10px;
+}

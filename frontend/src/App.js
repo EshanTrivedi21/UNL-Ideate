@@ -11,6 +11,7 @@ import Signup from "./component/Signup.js";
 import Dashboard from "./component/Dashboard.js";
 import { apiCheckLogin } from "./functions/basic.js";
 import Add from "./component/Add.js";
+import Profile from "./component/Profile.js";
 
 function App() {
   let [a, setA] = React.useState(null);
@@ -98,6 +99,10 @@ function App() {
       path: "/add",
       element: <Add/>,
     },
+    {
+      path: "/profile",
+      element: <Profile/>
+    }
   ]);
   return (
     <>
