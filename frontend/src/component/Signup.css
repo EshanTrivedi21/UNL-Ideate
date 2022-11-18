@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(12.5vh);
+  transform: translateY(8vh);
 }
 
 .backBtnSignup {
     position: absolute;
     font-size: 3.55vh;
     color: #ebebeb;
-    top: 9%;
+    top: 2.5%;
     left: 4%;
 }
 
@@ -84,4 +84,5 @@
 
 .textTertiary a {
   text-decoration: underline;
+  color: #EBEBEB;
 }

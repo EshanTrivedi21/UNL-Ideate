@@ -6,7 +6,7 @@ import "./Add.css";
 import { Button } from "@mui/material";
 
 export default function Add() {
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
 
   let [a, setA] = React.useState(null);
   let [user, setUser] = React.useState(null);
@@ -66,11 +66,10 @@ export default function Add() {
               accept=".png, .jpg, .jpeg"
               onChange={(e) => setImage(e.target.files[0])}
             />
-            <div className="uploadContent">
-              <p>Upload Image</p>
-            </div>
-            {/* {text.length !== 0 ? (
-              
+            {/* {Image.files.length ? (
+              <div className="uploadContent">
+                <p>Upload Image</p>
+              </div>
             ) : null} */}
           </div>
           <div className="form__group-add">

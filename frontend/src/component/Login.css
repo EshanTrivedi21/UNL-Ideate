@@ -3,19 +3,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(22.5vh);
+  transform: translateY(17.5vh);
   padding: 10vh 0;
   background: #F94D4D;
   box-shadow: 0px 7px 17px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
 }
 
+.loginSVG {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, 12.5vh);
+}
+
+.loginSVG img{
+  position: absolute;
+  width: 70vw;
+}
+
 .backBtn {
     position: absolute;
     font-size: 3.55vh;
     color: #242424;
-    top: 9%;
+    top: 2.5%;
     left: 4%;
+    z-index: 99;
 }
 
 .form__group {
@@ -88,4 +102,5 @@
 
 .textTertiary a {
     text-decoration: underline;
+    color: #EBEBEB;
 }

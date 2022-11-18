@@ -4,6 +4,7 @@ import "./Login.css";
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import apiPost, { apiCheckLogin } from "../functions/basic";
+import loginsvg from "../assets/loginsvg.svg";
 
 export default function Login() {
   let [a, setA] = React.useState(null);
@@ -33,7 +34,9 @@ export default function Login() {
         <Link to="/">
           <i className="fa-solid fa-arrow-left backBtn"></i>
         </Link>
-        <div></div>
+        <div className="loginSVG">
+          <img src={loginsvg}></img>
+        </div>
         <div className="loginContent">
           <div className="homeTitle">
             <Title>Welcome Back</Title>

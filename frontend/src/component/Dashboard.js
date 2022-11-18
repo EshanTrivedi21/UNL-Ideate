@@ -45,15 +45,15 @@ export default function Dashboard() {
           },
         ],
       };
-      map.addSource("heat", {
-        type: "geojson",
-        data: geojson,
-      });
-      map.addLayer({
-        id: "heatmap",
-        type: "heatmap",
-        source: "heat",
-      })
+      // map.addSource("heat", {
+      //   type: "geojson",
+      //   data: geojson,
+      // });
+      // map.addLayer({
+      //   id: "heatmap",
+      //   type: "heatmap",
+      //   source: "heat",
+      // })
     }
   }, [geo]);
   React.useEffect(() => {

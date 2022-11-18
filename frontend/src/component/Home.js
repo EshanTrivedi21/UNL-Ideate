@@ -26,7 +26,7 @@ export default function Home() {
           </div>
           <div className="homeIntro">
             <div className="homeTitle">
-              <Title>POTHOLES</Title>
+              <Title>GOSAFE</Title>
               <Tagline>"We will save you from them!"</Tagline>
             </div>
             <div className="buttonPrimaryMain">
