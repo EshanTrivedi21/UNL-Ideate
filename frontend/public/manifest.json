@@ -1,7 +1,7 @@
 {
-  "short_name": "Alertt",
-  "name": "Alertt - The Alert App",
-  "description": "Alertt is a free app that allows you to send alerts to your friends and family in case of an emergency. You can also send alerts to your friends and family when you are in a safe place.",
+  "short_name": "GOSAFE",
+  "name": "GOSAFE",
+  "description": "GOSAFE is a mobile application that allows you to reach your destination comfortably and safely.",
   "id": "http://localhost:3000/",
   "icons": [
     {
