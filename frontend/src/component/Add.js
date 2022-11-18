@@ -75,41 +75,29 @@ export default function Add() {
           <div className="form__group-add">
             <textarea
               type="text"
+              placeholder="Problem Faced"
+              id="Problem Faced"
+              className="form__input"
+              onChange={(e) => setAddress(e.target.value)}
+            ></textarea>
+            <label htmlFor="Problem Faced" className="form__label">
+              Problem Faced 
+            </label>
+          </div>
+          <div className="form__group-add">
+            <textarea
+              type="text"
               placeholder="Address"
               id="Address"
               className="form__input"
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={(e) => setLandmark(e.target.value)}
             ></textarea>
             <label htmlFor="Address" className="form__label">
               Address
             </label>
           </div>
-          <div className="form__group-add">
-            <input
-              type="text"
-              placeholder="Landmark"
-              id="Landmark"
-              className="form__input"
-              onChange={(e) => setLandmark(e.target.value)}
-            ></input>
-            <label htmlFor="Landmark" className="form__label">
-              Landmark
-            </label>
-          </div>
-          <div className="form__group">
-            <input
-              type="number"
-              placeholder="Pincode"
-              id="Pincode"
-              className="form__input"
-              onChange={(e) => setPincode(e.target.value)}
-            ></input>
-            <label htmlFor="Pincode" className="form__label">
-              Pincode
-            </label>
-          </div>
           <Button type="submit" variant="contained">
-            Kill pothole    
+            Submit   
           </Button>
         </form>
       </Container>
