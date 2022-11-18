@@ -82,4 +82,11 @@ router.post("/login", async (req, res, next) => {
 router.post("/logincheck", authCheck, async (req, res, next) => {
   res.status(200).json({ err: null, user: req.user });
 });
+router.post("/logout", authCheck, function (req, res) {
+  res.cookie("token", req.user.token, {
+    expires: new Date(Date.now() + 2 * 60 * 60 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ err: null });
+});
 module.exports = router;

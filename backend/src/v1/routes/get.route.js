@@ -1,9 +1,6 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const router = express.Router();
 const authCheck = require("../middleware/authCheck");
-const User = require("../../models/User.model");
 const PotholeModel = require("../../models/Pothole.model");
 
 router.post("/potholeGeo",authCheck, async (req, res, next) => {
@@ -16,4 +13,11 @@ router.post("/potholeGeo",authCheck, async (req, res, next) => {
         res.status(400).json({message:err.message});
     }
 });
+router.post("/user",authCheck, async (req, res, next) => {
+    if(req.user){
+        res.status(200).json({err: null,user: req.user});
+    }else{
+        res.status(400).json({err:"User not found"});
+    }
+})
 module.exports = router;

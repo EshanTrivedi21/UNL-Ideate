@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 // import UnlSdk from "unl-map-js";
 // import Geohash from "latlon-geohash";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./component/Home.js";
 import Login from "./component/Login.js";
 import Signup from "./component/Signup.js";
 import Dashboard from "./component/Dashboard.js";
-import { apiCheckLogin } from "./functions/basic.js";
+import axios from "axios";
 import Add from "./component/Add.js";
 import Profile from "./component/Profile.js";
 
@@ -81,28 +78,44 @@ function App() {
       //     window.location.href = "/welcome";
       //   }
       // },
-      element: <Dashboard/>
+      element: <Dashboard />,
     },
     {
       path: "/welcome",
-      element: <Home/>
+      element: <Home />,
     },
     {
       path: "/login",
-      element: <Login/>,
+      element: <Login />,
     },
     {
       path: "/signup",
-      element: <Signup/>,
+      element: <Signup />,
     },
     {
       path: "/add",
-      element: <Add/>,
+      element: <Add />,
     },
     {
       path: "/profile",
-      element: <Profile/>
-    }
+      element: <Profile />,
+    },
+    {
+      path: "/logout",
+      loader: () => {
+        axios
+          .post("http://localhost:4000/api/auth/logout")
+          .then((response) => {
+            if (response.data){
+              window.location.href = "/welcome";
+            };
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+      element: <Home />,
+    },
   ]);
   return (
     <>

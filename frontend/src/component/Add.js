@@ -12,8 +12,7 @@ export default function Add() {
   let [user, setUser] = React.useState(null);
   let [Image, setImage] = React.useState(null);
   let [Address, setAddress] = React.useState("");
-  let [Landmark, setLandmark] = React.useState("");
-  let [Pincode, setPincode] = React.useState("");
+  let [Problem, setProblem] = React.useState("");
   const navigate = useNavigate();
   React.useEffect(() => {
     if (!a) {
@@ -40,11 +39,9 @@ export default function Add() {
     e.preventDefault();
     navigator.geolocation.getCurrentPosition((position) => {
         let data = new FormData();
-        console.log(Image, Address, Landmark, Pincode);
         data.append("Image", Image);
         data.append("Address", Address);
-        data.append("Landmark", Landmark);
-        data.append("Pincode", Pincode);
+        data.append("Problem", Problem);
         data.append("lat", position.coords.latitude);
         data.append("lng", position.coords.longitude);
         apiPost("add/pothole", data, setUser);
@@ -78,7 +75,7 @@ export default function Add() {
               placeholder="Problem Faced"
               id="Problem Faced"
               className="form__input"
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={(e) => setProblem(e.target.value)}
             ></textarea>
             <label htmlFor="Problem Faced" className="form__label">
               Problem Faced 
@@ -90,7 +87,7 @@ export default function Add() {
               placeholder="Address"
               id="Address"
               className="form__input"
-              onChange={(e) => setLandmark(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
             ></textarea>
             <label htmlFor="Address" className="form__label">
               Address
