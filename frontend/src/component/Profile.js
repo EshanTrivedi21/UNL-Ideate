@@ -48,6 +48,16 @@ export default function Profile() {
                 <input className="form__input-profile" value={"⭐⭐⭐⭐"} disabled></input>
             </div>
         </div>
+        <div className="buttonDiv">
+            <Button>
+                Redeem Rewards   
+            </Button>
+            <div className="logout">
+                <Button type="submit" variant="contained">
+                    Logout
+                </Button>
+            </div>
+        </div>
     </Container>
   </>
   );
