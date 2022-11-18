@@ -18,10 +18,10 @@ export default function Dashboard() {
       }
     }
   }, [text]);
+  let [geo, setGeo] = React.useState(null);
   let [a, setA] = React.useState(null);
   // let navbarScale = 50;
 
-  let [geo, setGeo] = React.useState(null);
   const navigate = useNavigate();
   React.useEffect(() => {
     if (!a) {
@@ -387,6 +387,17 @@ export default function Dashboard() {
           <span className="progress"></span>
         </span>
       </div>
+      <div className="profileDiv" onClick={clickHandler}>
+              <Button
+                type="submit"
+                id="search--div"
+                className="searchLoc"
+                variant="contained"
+                onClick={search}
+              >
+                User Profile
+              </Button>
+            </div>
     </>
   );
 }
