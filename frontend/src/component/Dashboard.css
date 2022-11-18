@@ -5,20 +5,54 @@
   border-radius: 12px;
   position: absolute;
   left: 50%;
-  top: 5%;
+  top: 12px;
   transform: translate(-50%, 0);
   z-index: 99;
   padding: 5% 4%;
+  transition: height 0.5s ease-in-out;
 }
 
 .form__group-locator {
   margin-bottom: 2vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .form__group-locator:last-child {
   margin-bottom: 0vh;
+}
+
+.searchDiv {
+  transform: translateX(25%);
+  width: 87.5vw;
+  background: #ff3e3e;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  position: absolute;
+  left: 50%;
+  top: 16vh;
+  transform: translate(-50%, 0);
+  z-index: 99;
+  padding: 1% 4%;
+  transition: height 0.5s ease-in-out;
+}
+
+.searchDiv  .searchLoc{
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+  padding: 0;
+  font-size: 4.5vw;
+  width: 100%;
+}
+
+.searchDiv  .searchLoc:hover{
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+  padding: 0;
+  font-size: 4.5vw;
 }
 
 .form__input-locator {
@@ -31,7 +65,7 @@
   box-shadow: inset -2px -2px 100px rgba(0, 0, 0, 0.25),
     inset 2px 2px 4px rgba(0, 0, 0, 0.25);
   border: none;
-  width: 70vw;
+  width: 80%;
   transition: all 0.3s;
 }
 
@@ -68,46 +102,71 @@
   color: #fff9f9;
   background-size: fill;
   background-position: top;
-  height: 22vh;
+  height: 10vh;
   width: 95%;
 }
 
 .camBtn {
   background-color: #ebebeb;
   position: absolute;
-  margin: 50%;
+  margin: 17.5%;
   display: inline;
   padding: 5%;
   border-radius: 50%;
-  /* border: 5px solid #ff3838; */
   bottom: -20%;
   box-shadow: 0px 0px 10px rgb(0 0 0 / 25%);
 }
 
 .navbarScale {
-  width: 95%;
-  height: 10%;
+  width: 75%;
+  height: 13%;
   position: inherit;
   border-radius: 20px;
-  bottom: 5%;
+  bottom: 22.5%;
+  right: 20px;
   border-radius: 4px;
-	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-  -webkit-transition: 0.4s linear;
-  -moz-transition: 0.4s linear;
-  -o-transition: 0.4s linear;
-  transition: 0.4s linear;
-  -webkit-transition-property: width, background-color;
-  -moz-transition-property: width, background-color;
-  -o-transition-property: width, background-color;
-  transition-property: width, background-color;
+  background: #00000020;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.navbarScaleTitle {
+  position: absolute;
+  font-size: 17.5px;
+  text-align: center;
+  top: -4vh;
+  left: 5px;
+}
+
+.progress {
+  position: inherit;
+  border-radius: 2px;
+  width: 70%;
+  height: 100%;
+  background-color: #52ff52;
+}
+
+.progress span {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1.25px;
 }
 
 .cameraButton {
   color: #ff3838;
   font-size: 10vw;
+}
+
+.rqi {
+  font-weight: 700;
+  font-size: 15px;
+  font-size: 17.5px;
+  position: inherit;
+  left: 20px;
+  letter-spacing: 2.5px;
+  bottom: 13px;
 }

@@ -1,6 +1,8 @@
 {
-  "short_name": "alertt",
-  "name": "Alertt",
+  "short_name": "Alertt",
+  "name": "Alertt - The Alert App",
+  "description": "Alertt is a free app that allows you to send alerts to your friends and family in case of an emergency. You can also send alerts to your friends and family when you are in a safe place.",
+  "id": "http://localhost:3000/",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +20,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
-  "display": "fullscreen",
-  "theme_color": "#ffffff",
+  "start_url": ".",
+  "prefer_related_applications": false,
+  "display": "standalone",
+  "theme_color": "#ff3e3e",
   "background_color": "#ffffff"
 }
