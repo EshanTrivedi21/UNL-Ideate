@@ -5,13 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 import apiPost, { apiCheckLogin } from "../functions/basic.js";
 import Geohash from "latlon-geohash";
 import { Button } from "@mui/material";
-
-
+var map;
 export default function Dashboard() {
   function clickHandler() {
     document.querySelector(".searchDiv").style.display = "none";
   }
   const [text, setText] = useState("");
+  React.useEffect(() => {
+    if (text.length != 0) {
+      if (document.querySelector(".searchDiv").style.display === "none") {
+        document.querySelector(".searchDiv").style.display = "block";
+      }
+    }
+  }, [text]);
   let [a, setA] = React.useState(null);
   let navbarScale = 50;
 
@@ -24,37 +30,37 @@ export default function Dashboard() {
     apiPost("get/potholeGeo", {}, setGeo);
   }, []);
   React.useEffect(() => {
-    if (geo) {
-      let s = [];
-      geo.forEach((element) => {
-        let f = [];
-        f.push(element.lat);
-        f.push(element.lng);
-        s.push(f);
-      });
-      var geojson = {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            properties: {},
-            geometry: {
-              coordinates: s,
-              type: "LineString",
-            },
-          },
-        ],
-      };
-      // map.addSource("heat", {
-      //   type: "geojson",
-      //   data: geojson,
-      // });
-      // map.addLayer({
-      //   id: "heatmap",
-      //   type: "heatmap",
-      //   source: "heat",
-      // })
-    }
+    // if (geo) {
+    //   let s = [];
+    //   geo.forEach((element) => {
+    //     let f = [];
+    //     f.push(element.lat);
+    //     f.push(element.lng);
+    //     s.push(f);
+    //   });
+    //   var geojson = {
+    //     type: "FeatureCollection",
+    //     features: [
+    //       {
+    //         type: "Feature",
+    //         properties: {},
+    //         geometry: {
+    //           coordinates: s,
+    //           type: "LineString",
+    //         },
+    //       },
+    //     ],
+    //   };
+    // map.addSource("heat", {
+    //   type: "geojson",
+    //   data: geojson,
+    // });
+    // map.addLayer({
+    //   id: "heatmap",
+    //   type: "heatmap",
+    //   source: "heat",
+    // })
+    // }
   }, [geo]);
   React.useEffect(() => {
     if (a) {
@@ -64,7 +70,7 @@ export default function Dashboard() {
     }
   }, [a]);
   React.useEffect(() => {
-    var map = new UnlSdk.Map({
+    map = new UnlSdk.Map({
       apiKey: "Ddm47D4q7Iq7ci026pTvaMsIDpinlJNl",
       vpmId: "2d2639a7-b6d6-403a-b84c-95b63af2cae8",
       container: "map",
@@ -72,11 +78,22 @@ export default function Dashboard() {
       zoom: 1,
       minZoom: 2,
     });
+    // var geolocate = new UnlSdk.GeolocateControl({
+    //   positionOptions: {
+    //     enableHighAccuracy: true,
+    //   },
+    //   trackUserLocation: true,
+    // });
+    // map.addControl(geolocate);
+    // geolocate.on("geolocate", function () {
+    //   console.log("A geolocate event has occurred.");
+    //   console.log(geolocate);
+    // });
     navigator.geolocation.getCurrentPosition((position) => {
       map.jumpTo({
         center: [position.coords.longitude, position.coords.latitude],
         zoom: 18,
-        pitch: 45,
+        pitch: 0,
         // bearing: 90
       });
       var marker = new UnlSdk.Marker()
@@ -105,7 +122,77 @@ export default function Dashboard() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-      });
+        navigator.geolocation.getCurrentPosition((position) => {
+          let my = Geohash.encode(
+            position.coords.latitude,
+            position.coords.longitude,
+            9
+          );
+          let way = Geohash.encode(
+            response.features[0].geometry.coordinates[1],
+            response.features[0].geometry.coordinates[0],
+            9
+          );
+          console.log(my, way);
+          fetch(
+            "https://api.unl.global/v1/routing?" +
+              new URLSearchParams({
+                waypoints: my + ";" + way,
+                transportMode: "car",
+                format: "coordinates",
+              }),
+            {
+              method: "GET",
+              headers: {
+                accept: "application/json",
+                "x-unl-api-key": "Ddm47D4q7Iq7ci026pTvaMsIDpinlJNl",
+                "x-unl-vpm-id": "2d2639a7-b6d6-403a-b84c-95b63af2cae8",
+                "Content-Type": "application/json",
+              },
+            }
+          )
+            .then((response) => response.json())
+            .then((response) => {
+              // If a layer with ID 'state-data' exists, remove it.
+              if (map.getLayer("route")) map.removeLayer("route");
+              try {
+                map.removeSource("route");
+              } catch (e) {}
+              console.log(response);
+              let s = [];
+              response.overview.linestring.forEach((element) => {
+                s.push(element.split(","));
+              });
+              console.log(s);
+              map.addSource("route", {
+                type: "geojson",
+                data: {
+                  type: "Feature",
+                  properties: {},
+                  geometry: {
+                    type: "LineString",
+                    coordinates: s,
+                  },
+                },
+              });
+              map.zoomOut({offset: [80, 60]});
+              map.addLayer({
+                id: "route",
+                type: "line",
+                source: "route",
+                layout: {
+                  "line-join": "round",
+                  "line-cap": "round",
+                },
+                paint: {
+                  "line-color": "#4287f5",
+                  "line-width": 8,
+                },
+              });
+            });
+        });
+      })
+      .catch((err) => {});
   }
   return (
     <>
