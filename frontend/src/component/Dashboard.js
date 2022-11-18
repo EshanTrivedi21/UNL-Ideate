@@ -78,84 +78,6 @@ export default function Dashboard() {
       zoom: 1,
       minZoom: 2,
     });
-    map.on("load", function () {
-      map.addSource("road", {
-        type: "geojson",
-        data: "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places.geojson",
-      });
-      map.addLayer(
-        {
-          id: "road",
-          type: "heatmap",
-          source: "road",
-          maxzoom: 9,
-          paint: {
-            // Increase the heatmap weight based on frequency and property magnitude
-            "heatmap-weight": [
-              "interpolate",
-              ["linear"],
-              ["get", "mag"],
-              0,
-              0,
-              6,
-              1,
-            ],
-            // Increase the heatmap color weight weight by zoom level
-            // heatmap-intensity is a multiplier on top of heatmap-weight
-            "heatmap-intensity": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              0,
-              1,
-              9,
-              3,
-            ],
-            // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
-            // Begin color ramp at 0-stop with a 0-transparancy color
-            // to create a blur-like effect.
-            "heatmap-color": [
-              "interpolate",
-              ["linear"],
-              ["heatmap-density"],
-              0,
-              "rgba(33,102,172,0)",
-              0.2,
-              "rgb(103,169,207)",
-              0.4,
-              "rgb(209,229,240)",
-              0.6,
-              "rgb(253,219,199)",
-              0.8,
-              "rgb(239,138,98)",
-              1,
-              "rgb(178,24,43)",
-            ],
-            // Adjust the heatmap radius by zoom level
-            "heatmap-radius": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              0,
-              2,
-              9,
-              20,
-            ],
-            // Transition from heatmap to circle layer by zoom level
-            "heatmap-opacity": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              7,
-              1,
-              9,
-              0,
-            ],
-          },
-        },
-        "water"
-      );
-    });
     navigator.geolocation.getCurrentPosition((position) => {
       map.jumpTo({
         center: [position.coords.longitude, position.coords.latitude],
@@ -188,7 +110,6 @@ export default function Dashboard() {
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         navigator.geolocation.getCurrentPosition((position) => {
           let my = Geohash.encode(
             position.coords.latitude,
@@ -200,7 +121,6 @@ export default function Dashboard() {
             response.features[0].geometry.coordinates[0],
             9
           );
-          console.log(my, way);
           fetch(
             "https://api.unl.global/v1/routing?" +
               new URLSearchParams({
@@ -225,12 +145,10 @@ export default function Dashboard() {
               try {
                 map.removeSource("route");
               } catch (e) {}
-              console.log(response);
               let s = [];
               response.overview.linestring.forEach((element) => {
                 s.push(element.split(","));
               });
-              console.log(s);
               map.addSource("route", {
                 type: "geojson",
                 data: {
@@ -263,7 +181,7 @@ export default function Dashboard() {
   }
   return (
     <>
-      <div className="locatorDashboard">
+      <form className="locatorDashboard" onSubmit={(e)=> e.preventDefault()}>
         <div className="form__group-locator">
           <label htmlFor="from" className="form__label-locator">
             <svg
@@ -373,7 +291,7 @@ export default function Dashboard() {
             </div>
           ) : null}
         </div>
-      </div>
+      </form>
 
       <div id="map" style={{ width: "100vw", height: "100vh" }}></div>
       <div className="bottomDashboard">
@@ -388,16 +306,17 @@ export default function Dashboard() {
         </span>
       </div>
       <div className="profileDiv" onClick={clickHandler}>
-              <Button
-                type="submit"
-                id="search--div"
-                className="searchLoc"
-                variant="contained"
-                onClick={search}
-              >
-                User Profile
-              </Button>
-            </div>
+        <Link to="/profile">
+          <Button
+            type="submit"
+            id="search--div"
+            className="searchLoc"
+            variant="contained"
+          >
+            User Profile
+          </Button>
+        </Link>
+      </div>
     </>
   );
 }

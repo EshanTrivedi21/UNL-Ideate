@@ -188,3 +188,7 @@
   letter-spacing: 2.5px;
   bottom: 13px;
 }
+.profileDiv a{
+  color: white;
+  text-decoration: none;
+}
