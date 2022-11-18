@@ -15,8 +15,7 @@ router.post("/potholeGeo",authCheck, async (req, res, next) => {
 });
 router.post("/user",authCheck, async (req, res, next) => {
     if(req.user){
-        console.log(req.user);
-        res.status(200).json({err: null});
+        res.status(200).json({err: null,user: req.user});
     }else{
         res.status(400).json({err:"User not found"});
     }

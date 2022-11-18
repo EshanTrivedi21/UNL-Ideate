@@ -7,7 +7,7 @@ const potholeSchema = new mongoose.Schema({
   Image: { type: String, required: true },
   Address: { type: String, required: true },
   Verified: { type: Boolean, default: false },
-  Landmark: { type: String, required: true },
+  Problem: { type: String, required: true },
   by: { type: Schema.Types.ObjectId, ref: "user" },
 });
 

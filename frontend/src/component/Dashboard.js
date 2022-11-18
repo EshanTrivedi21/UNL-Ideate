@@ -308,7 +308,6 @@ export default function Dashboard() {
       <div className="profileDiv" onClick={clickHandler}>
         <Link to="/profile">
           <Button
-            type="submit"
             id="search--div"
             className="searchLoc"
             variant="contained"

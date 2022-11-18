@@ -11,9 +11,9 @@ const { v4: uuid } = require("uuid");
 router.post("/pothole", authCheck, async (req, res, next) => {
   try {
     if (req.user) {
-      const { lat, lng, Address, Landmark } = req.body;
+      const { lat, lng, Address, Problem } = req.body;
       const file = req.files.Image;
-      if (!(lat && lng && file && Address && Landmark)) {
+      if (!(lat && lng && file && Address && Problem)) {
         return res.status(400).json({ err: "All input is required" });
       }
       let folder = "potholes/";
@@ -35,9 +35,12 @@ router.post("/pothole", authCheck, async (req, res, next) => {
               lng,
               Image: "/usercontent/" + folder + Fileid + "." + fileExt,
               Address,
-              Landmark,
+              Problem,
               by: req.user._id,
           })
+          let user = await User.findById(req.user.user_id)
+          user.reward += 10;
+          user.save();
           res.status(200).json({ err: null });
         }
       );
