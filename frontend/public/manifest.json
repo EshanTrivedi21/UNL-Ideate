@@ -1,7 +1,7 @@
 {
-  "short_name": "Alertt",
-  "name": "Alertt - The Alert App",
-  "description": "Alertt is a free app that allows you to send alerts to your friends and family in case of an emergency. You can also send alerts to your friends and family when you are in a safe place.",
+  "short_name": "GoSafe",
+  "name": "GoSafe - The Alert App",
+  "description": "GoSafe is an Initiative taken to make Indian Roads Safe",
   "id": "http://localhost:3000/",
   "icons": [
     {
@@ -24,5 +24,5 @@
   "prefer_related_applications": false,
   "display": "standalone",
   "theme_color": "#ff3e3e",
-  "background_color": "#ffffff"
+  "background_color": "#ff3e3e"
 }
