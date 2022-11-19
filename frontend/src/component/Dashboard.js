@@ -81,7 +81,7 @@ export default function Dashboard() {
     navigator.geolocation.getCurrentPosition((position) => {
       map.jumpTo({
         center: [position.coords.longitude, position.coords.latitude],
-        zoom: 18,
+        zoom: 14,
         pitch: 0,
         // bearing: 90
       });
@@ -140,7 +140,6 @@ export default function Dashboard() {
           )
             .then((response) => response.json())
             .then((response) => {
-              // If a layer with ID 'state-data' exists, remove it.
               if (map.getLayer("route")) map.removeLayer("route");
               try {
                 map.removeSource("route");

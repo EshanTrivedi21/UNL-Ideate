@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "short_name": "GoSafe",
   "name": "GoSafe - The Alert App",
   "description": "GoSafe is an Initiative taken to make Indian Roads Safe",
+=======
+  "short_name": "GOSAFE",
+  "name": "GOSAFE",
+  "description": "GOSAFE is a mobile application that allows you to reach your destination comfortably and safely.",
+>>>>>>> f31376807a6037af5bb2e5accbf3d65434d8c9b3
   "id": "http://localhost:3000/",
   "icons": [
     {
